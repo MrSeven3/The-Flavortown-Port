@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdlvkwkxxalp1"]
+[gd_scene format=3 uid="uid://bdlvkwkxxalp1"]
+
+[ext_resource type="Script" uid="uid://b5ibofrvq8m3l" path="res://template/conveyors/straight_conveyor_belt.gd" id="1_8i1ei"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_murqt"]
 size = Vector3(1, 0.2, 1)
@@ -6,13 +8,33 @@ size = Vector3(1, 0.2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8i1ei"]
 size = Vector3(1, 0.25, 1)
 
-[node name="StraightConveyorBelt" type="Node3D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_murqt"]
+friction = 0.0
+bounce = 0.3
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
+size = Vector3(1, 0.2, 1)
+
+[node name="StraightConveyorBelt" type="Node3D" unique_id=1158231326]
+script = ExtResource("1_8i1ei")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1220616459]
 mesh = SubResource("BoxMesh_murqt")
 
-[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+[node name="Area3D" type="Area3D" parent="." unique_id=1394524863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025094151, 0)
+gravity_point_center = Vector3(0, 0, -1)
+gravity_direction = Vector3(0, 0, -1)
+gravity = 6.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1052850257]
 shape = SubResource("BoxShape3D_8i1ei")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1147755983]
+physics_material_override = SubResource("PhysicsMaterial_murqt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=1854081010]
+shape = SubResource("BoxShape3D_murqt")
+
+[connection signal="body_entered" from="Area3D" to="." method="conveyor"]
+[connection signal="body_exited" from="Area3D" to="." method="conveyor"]
