@@ -17,11 +17,11 @@ func _physics_process(_delta: float) -> void:
 func conveyor(object:Node3D) -> void:
 	if object.has_method("apply_dir"):
 		conveyor_belt_dir = Vector3(0,0,-1) * global_transform.basis
-		object.call("apply_dir",conveyor_belt_dir)
 		object.is_on_belt = true
+		object.call("apply_dir",conveyor_belt_dir)
 
 func stop_conveyoring(object:Node3D) -> void:
 	if object.has_method("apply_dir"):
 		conveyor_belt_dir = Vector3(0,0,-1) * global_transform.basis
-		object.call("apply_dir",-conveyor_belt_dir)
 		object.is_on_belt = false
+		object.call("apply_dir",-conveyor_belt_dir)

@@ -3,7 +3,7 @@ var velocity := Vector3.ZERO
 var belt_velocity:Vector3 = Vector3.ZERO
 var is_on_belt:bool = false
 
-var conveyor_force := Vector3(0,0,-3)
+var conveyor_force := Vector3(-3,-3,-3)
 var conveyor_dir := Vector3.ZERO
 
 @export var bounce:float = 0.3
@@ -28,20 +28,17 @@ func _physics_process(delta: float) -> void:
 		
 		#these 3 lines are AI, because vectors suck and im sorry
 		# Override the velocity in the direction of the belt velocity
-		var belt_motion = belt_velocity.normalized() * belt_velocity.length()
+		var belt_motion = belt_velocity.normalized()# * belt_velocity.length()
 		var current_motion = velocity.project(belt_velocity.normalized())
-		
-		print(str(current_motion))
-		
+				
 		#me again for this if statemetn
-		if typeof(current_motion) == TYPE_FLOAT and current_motion == NAN:
+		if is_nan(current_motion.x) or is_nan(current_motion.y) or is_nan(current_motion.z):# and typeof(current_motion) == TYPE_FLOAT:
 			breakpoint
 		
 		#ai again for this line
 		# Update velocity only along the belt direction, preserving other motion
 		velocity += belt_motion - current_motion
 		
-	
 	
 	#print(str(is_on_belt))
 	#print(str(velocity))
