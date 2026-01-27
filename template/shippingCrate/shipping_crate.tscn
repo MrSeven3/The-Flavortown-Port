@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://isauhwy4dnm0"]
 
 [ext_resource type="Script" uid="uid://bjfgkfw3s3y22" path="res://template/shippingCrate/shipping_crate.gd" id="1_exq4a"]
-[ext_resource type="Texture2D" uid="uid://djsab1d5id2eo" path="res://resources/tempDevTextures/kenneyPrototype/PNG/Light/texture_02.png" id="1_favv8"]
+[ext_resource type="Texture2D" uid="uid://bsu8mec7kdo7t" path="res://resources/tempDevTextures/myBadDrawings/package.svg" id="2_exq4a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omyxl"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msngg"]
-albedo_texture = ExtResource("1_favv8")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qx5e"]
+albedo_texture = ExtResource("2_exq4a")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_favv8"]
-material = SubResource("StandardMaterial3D_msngg")
+material = SubResource("StandardMaterial3D_2qx5e")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exq4a"]
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="ShippingCrate" type="RigidBody3D" unique_id=783893628]
@@ -25,3 +30,8 @@ shape = SubResource("BoxShape3D_omyxl")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1383689548]
 mesh = SubResource("BoxMesh_favv8")
 skeleton = NodePath("../ShippingCrate")
+
+[node name="ConveyorCheck" type="Area3D" parent="." unique_id=319609282]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConveyorCheck" unique_id=486651259]
+shape = SubResource("BoxShape3D_exq4a")

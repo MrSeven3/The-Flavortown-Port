@@ -3,48 +3,23 @@ var velocity := Vector3.ZERO
 var belt_velocity:Vector3 = Vector3.ZERO
 var is_on_belt:bool = false
 
-var conveyor_force := Vector3(0,0,-3)
-var conveyor_dir := Vector3.ZERO
-
 @export var bounce:float = 0.3
 
-func apply_dir(dir:Vector3) -> void: #called by conveyor belts
-	conveyor_dir += dir
-	
-func conveyor() -> void:
-	var areas = $ConveyorCheck.get_overlapping_areas()
-	for area in areas:
-		var area_parent = area.get_parent()
-		if "conveyor_belt_dir" in area_parent:
-			if area_parent.conveyor_belt_dir != belt_velocity:
-				belt_velocity += area_parent.conveyor_belt_dir
+func apply_speed(speed:Vector3) -> void: #called by conveyor belts
+	belt_velocity = speed
 
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta #Apply gravity
 	
 	if is_on_belt:
-		#alt solution is to keep a list of directions, average them to get final direction and then project if this doesn't work.
-		belt_velocity = conveyor_force.project(conveyor_dir)
-		
 		#these 3 lines are AI, because vectors suck and im sorry
 		# Override the velocity in the direction of the belt velocity
 		var belt_motion = belt_velocity.normalized() * belt_velocity.length()
 		var current_motion = velocity.project(belt_velocity.normalized())
 		
-		print(str(current_motion))
-		
-		#me again for this if statemetn
-		if typeof(current_motion) == TYPE_FLOAT and current_motion == NAN:
-			breakpoint
-		
-		#ai again for this line
 		# Update velocity only along the belt direction, preserving other motion
 		velocity += belt_motion - current_motion
 		
-	
-	
-	#print(str(is_on_belt))
-	#print(str(velocity))
 	var impact = move_and_collide(velocity*delta) #Built in function to have nice movement, velocity, and collision
 	
 	if impact != null:

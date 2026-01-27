@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b05hwpo0tihmx"]
+[gd_scene format=3 uid="uid://b05hwpo0tihmx"]
 
 [ext_resource type="Script" uid="uid://d0n815in7tycy" path="res://template/player/player.gd" id="1_gu5g1"]
 
@@ -6,19 +6,22 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gu5g1"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=151753982]
 script = ExtResource("1_gu5g1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1166195836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ybod8")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1834654436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_gu5g1")
 
-[node name="CameraAnchor" type="Marker3D" parent="."]
+[node name="CameraAnchor" type="Marker3D" parent="." unique_id=786628053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=721792570]
+
+[node name="PickupRay" type="RayCast3D" parent="CameraAnchor" unique_id=410467294]
+target_position = Vector3(0, 0, -2.5)

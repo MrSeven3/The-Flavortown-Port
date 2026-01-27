@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://doy24o71muc6a" path="res://resources/themes/grey_dev_grid.tres" id="1_g2foc"]
 [ext_resource type="PackedScene" uid="uid://isauhwy4dnm0" path="res://template/shippingCrate/shipping_crate.tscn" id="2_g2foc"]
-[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://template/conveyors/straight_conveyor_belt.tscn" id="3_ix85o"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://template/conveyors/straight_conveyor.tscn" id="3_ix85o"]
 [ext_resource type="PackedScene" uid="uid://b05hwpo0tihmx" path="res://template/player/player.tscn" id="4_kiqwp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ix85o"]
@@ -34,23 +34,38 @@ environment = SubResource("Environment_sfjpx")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1723114340]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1723114340]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1734414686]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1734414686]
 shape = SubResource("BoxShape3D_g2foc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1487616229]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1487616229]
 mesh = SubResource("BoxMesh_kiqwp")
+skeleton = NodePath("../..")
 
 [node name="ShippingCrate" parent="." unique_id=344893090 instance=ExtResource("2_g2foc")]
-transform = Transform3D(1, 0, 0, 0, 0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 2, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, -1, 6.150027, -2)
 
 [node name="ShippingCrate2" parent="." unique_id=783893628 instance=ExtResource("2_g2foc")]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, -2.9802322e-08, 0, 2.9802322e-08, 0.9999999, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="StraightConveyorBelt" parent="." unique_id=1466916600 instance=ExtResource("3_ix85o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 13.5, 0, 1, -6)
-conveyor_belt_speed = 20.0
+[node name="StraightConveyor" parent="." unique_id=1466916600 instance=ExtResource("3_ix85o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="StraightConveyor3" parent="." unique_id=1890298817 instance=ExtResource("3_ix85o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="StraightConveyor4" parent="." unique_id=1953829051 instance=ExtResource("3_ix85o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="StraightConveyor5" parent="." unique_id=1876622324 instance=ExtResource("3_ix85o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="StraightConveyor6" parent="." unique_id=1174821003 instance=ExtResource("3_ix85o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+
+[node name="StraightConveyor7" parent="." unique_id=1038607488 instance=ExtResource("3_ix85o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, -5)
 
 [node name="Player" parent="." unique_id=399662573 instance=ExtResource("4_kiqwp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
