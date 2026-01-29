@@ -1,11 +1,10 @@
 extends CharacterBody3D
 
 const mouse_sensitivity = 0.002
-
 const jump_vel:float = 6.5
 
-const regular_speed = 2.5
-const sprint_speed = 4.5
+const regular_speed = 3.5
+const sprint_speed = 5.5
 var speed:float
 
 var should_jump:bool = false #means the player will jump on the next physics tick
