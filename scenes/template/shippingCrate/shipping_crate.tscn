@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://isauhwy4dnm0"]
 
-[ext_resource type="Script" uid="uid://bjfgkfw3s3y22" path="res://template/shippingCrate/shipping_crate.gd" id="1_exq4a"]
+[ext_resource type="PhysicsMaterial" uid="uid://cpn3y51mdyhkg" path="res://resources/physicsMaterials/wooden_crate.tres" id="1_eomy4"]
+[ext_resource type="Script" uid="uid://bjfgkfw3s3y22" path="res://scenes/template/shippingCrate/shipping_crate.gd" id="1_exq4a"]
 [ext_resource type="Texture2D" uid="uid://bsu8mec7kdo7t" path="res://resources/tempDevTextures/myBadDrawings/package.svg" id="2_exq4a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omyxl"]
@@ -20,7 +21,9 @@ size = Vector3(0.5, 0.5, 0.5)
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="ShippingCrate" type="RigidBody3D" unique_id=783893628]
+physics_material_override = ExtResource("1_eomy4")
 script = ExtResource("1_exq4a")
+metadata/pickupable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=694688263]
 shape = SubResource("BoxShape3D_omyxl")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdlvkwkxxalp1"]
 
-[ext_resource type="Script" uid="uid://b5ibofrvq8m3l" path="res://template/conveyors/straight_conveyor.gd" id="1_8i1ei"]
+[ext_resource type="Script" uid="uid://b5ibofrvq8m3l" path="res://scenes/template/conveyors/straight_conveyor.gd" id="1_8i1ei"]
 [ext_resource type="Texture2D" uid="uid://l444mjfnbone" path="res://resources/tempDevTextures/myBadDrawings/arrow.svg" id="2_svmat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibtb"]

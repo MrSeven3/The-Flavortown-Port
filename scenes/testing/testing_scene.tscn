@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bfdu2na0cy6hd"]
 
 [ext_resource type="Material" uid="uid://doy24o71muc6a" path="res://resources/themes/grey_dev_grid.tres" id="1_g2foc"]
-[ext_resource type="PackedScene" uid="uid://isauhwy4dnm0" path="res://template/shippingCrate/shipping_crate.tscn" id="2_g2foc"]
-[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://template/conveyors/straight_conveyor.tscn" id="3_ix85o"]
-[ext_resource type="PackedScene" uid="uid://b05hwpo0tihmx" path="res://template/player/player.tscn" id="4_kiqwp"]
+[ext_resource type="PackedScene" uid="uid://isauhwy4dnm0" path="res://scenes/template/shippingCrate/shipping_crate.tscn" id="2_g2foc"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://scenes/template/conveyors/straight_conveyor.tscn" id="3_ix85o"]
+[ext_resource type="PackedScene" uid="uid://b05hwpo0tihmx" path="res://scenes/template/player/player.tscn" id="4_kiqwp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ix85o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,6 +50,12 @@ transform = Transform3D(0.70710677, -0.6123724, 0.35355338, 0.70710677, 0.612372
 
 [node name="ShippingCrate2" parent="." unique_id=783893628 instance=ExtResource("2_g2foc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ShippingCrate3" parent="." unique_id=1262392659 instance=ExtResource("2_g2foc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.7020681)
+
+[node name="ShippingCrate4" parent="." unique_id=173734274 instance=ExtResource("2_g2foc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7316952, -0.33524314)
 
 [node name="StraightConveyor" parent="." unique_id=1466916600 instance=ExtResource("3_ix85o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
