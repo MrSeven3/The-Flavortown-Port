@@ -10,9 +10,12 @@ var conveyor_dir := Vector3.ZERO
 
 func apply_dir(dir:Vector3) -> void: #called by conveyor belts
 	conveyor_dir += dir
-	Utils.log(self,str(conveyor_dir))
+
+func clear_velocity() -> void:
+	velocity = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
+	Utils.log(self,str(velocity))
 	velocity += get_gravity() * delta #Apply gravity
 	
 	if is_on_belt:

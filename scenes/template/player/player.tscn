@@ -27,4 +27,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 target_position = Vector3(0, 0, -2.5)
 
 [node name="ObjectHeldMarker" type="Marker3D" parent="CameraAnchor" unique_id=957290360]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3331061, -0.16313052, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45578343, -0.24870288, -1.1773338)

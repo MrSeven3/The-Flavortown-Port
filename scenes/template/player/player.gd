@@ -25,6 +25,7 @@ func pickup_object() -> void:
 func drop_object() -> void:
 	if object_held and held_object:
 		object_held = false
+		held_object.clear_velocity()
 		held_object.set_collision_mask_value(1,true)
 		held_object.set_collision_layer_value(1,true)
 		held_object = null
@@ -36,6 +37,10 @@ func _input(event): #called on inputs(mouse movements and keypressed)
 		
 		$CameraAnchor.rotate_x(-event.relative.y * mouse_sensitivity)
 		$CameraAnchor.rotation.x = clampf($CameraAnchor.rotation.x, -deg_to_rad(90), deg_to_rad(90))
+		if object_held and held_object:
+			held_object.clear_velocity()
+			held_object.position = $CameraAnchor/ObjectHeldMarker.global_position
+			held_object.rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
 	elif event is InputEventKey:
 		if event.keycode == KEY_SPACE and not event.is_released() and is_on_floor():
 			should_jump = true
@@ -49,6 +54,7 @@ func _input(event): #called on inputs(mouse movements and keypressed)
 
 func _physics_process(delta: float) -> void:
 	if object_held and held_object:
+		held_object.clear_velocity()
 		held_object.position = $CameraAnchor/ObjectHeldMarker.global_position
 		held_object.rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
 	

@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://bdlvkwkxxalp1"]
+[gd_scene format=3 uid="uid://l6gnt2fbvec6"]
 
-[ext_resource type="Script" uid="uid://b5ibofrvq8m3l" path="res://scenes/template/conveyors/straight_conveyor.gd" id="1_8i1ei"]
-[ext_resource type="Texture2D" uid="uid://l444mjfnbone" path="res://resources/tempDevTextures/myBadDrawings/straight_conveyor.svg" id="2_svmat"]
+[ext_resource type="Script" uid="uid://lj8qttblr015" path="res://scenes/template/conveyors/right_turn_conveyor.gd" id="1_p4o86"]
+[ext_resource type="Texture2D" uid="uid://0rp6avwyjm1y" path="res://resources/tempDevTextures/myBadDrawings/right_turn_conveyor.svg" id="2_p4o86"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibtb"]
-albedo_texture = ExtResource("2_svmat")
+albedo_texture = ExtResource("2_p4o86")
 uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
 
@@ -18,12 +18,12 @@ size = Vector3(1, 0.25, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
 size = Vector3(1, 0.2, 1)
 
-[node name="StraightConveyor" type="RigidBody3D" unique_id=1818859155]
+[node name="RightTurnConveyor" type="RigidBody3D" unique_id=1818859155]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 gravity_scale = 0.0
 freeze = true
 freeze_mode = 1
-script = ExtResource("1_8i1ei")
+script = ExtResource("1_p4o86")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1220616459]
 mesh = SubResource("BoxMesh_murqt")

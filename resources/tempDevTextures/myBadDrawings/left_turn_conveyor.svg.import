@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l444mjfnbone"
-path.s3tc="res://.godot/imported/arrow.svg-a3b55e08e7e67f2a9915e2bb844148e5.s3tc.ctex"
+uid="uid://cnug4vabaa4b2"
+path.s3tc="res://.godot/imported/left_turn_conveyor.svg-1a53ae6362ff5e409df63e0e44b01b24.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/tempDevTextures/myBadDrawings/arrow.svg"
-dest_files=["res://.godot/imported/arrow.svg-a3b55e08e7e67f2a9915e2bb844148e5.s3tc.ctex"]
+source_file="res://resources/tempDevTextures/myBadDrawings/left_turn_conveyor.svg"
+dest_files=["res://.godot/imported/left_turn_conveyor.svg-1a53ae6362ff5e409df63e0e44b01b24.s3tc.ctex"]
 
 [params]
 

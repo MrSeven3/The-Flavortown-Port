@@ -1,8 +1,7 @@
 extends RigidBody3D
 
-@export var conveyor_belt_dir = Vector3(0,0,-1) #mirrored for some reason I don't care to figure out
+@export var conveyor_belt_dir = Vector3(-1,0,-1) #mirrored for some reason I don't care to figure out
 var rotated_belt_dir:Vector3
-
 
 #unoptimized ahh logic, but it works, only does overlap checks every frame
 
