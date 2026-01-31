@@ -15,7 +15,6 @@ func clear_velocity() -> void:
 	velocity = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
-	Utils.log(self,str(velocity))
 	velocity += get_gravity() * delta #Apply gravity
 	
 	if is_on_belt:
@@ -31,14 +30,10 @@ func _physics_process(delta: float) -> void:
 		if is_nan(current_motion.x) or is_nan(current_motion.y) or is_nan(current_motion.z):# and typeof(current_motion) == TYPE_FLOAT:
 			breakpoint
 			
-		
 		#ai again for this line
 		# Update velocity only along the belt direction, preserving other motion
 		velocity += belt_motion - current_motion
 		
-	
-	#print(str(is_on_belt))
-	#print(str(velocity))
 	var impact = move_and_collide(velocity*delta) #Built in function to have nice movement, velocity, and collision
 	
 	if impact != null:

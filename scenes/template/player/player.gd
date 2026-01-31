@@ -50,6 +50,8 @@ func _input(event): #called on inputs(mouse movements and keypressed)
 				pickup_object()
 			else:
 				drop_object()
+		elif event.keycode == KEY_ESCAPE and not event.is_released() and not event.is_echo():
+			$CameraAnchor/Camera3D/EscapeMenu.visible = not $CameraAnchor/Camera3D/EscapeMenu.visible
 
 
 func _physics_process(delta: float) -> void:

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b05hwpo0tihmx"]
 
 [ext_resource type="Script" uid="uid://d0n815in7tycy" path="res://scenes/template/player/player.gd" id="1_gu5g1"]
+[ext_resource type="LabelSettings" uid="uid://vc8576187qon" path="res://resources/settings/labelSettings/menu_title.tres" id="2_06s55"]
+[ext_resource type="Script" uid="uid://cxxihml3bpbmp" path="res://scenes/template/player/escape_menu.gd" id="2_qs6w3"]
+[ext_resource type="Theme" uid="uid://bg6kajywy3en" path="res://resources/settings/themes/menu_button.tres" id="3_qjtj5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ybod8"]
 
@@ -23,8 +26,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=721792570]
 
+[node name="EscapeMenu" type="Control" parent="CameraAnchor/Camera3D" unique_id=214595595]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("2_qs6w3")
+
+[node name="Title" type="Label" parent="CameraAnchor/Camera3D/EscapeMenu" unique_id=93742647]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 24.0
+offset_right = 1176.0
+offset_bottom = 112.0
+text = "Game Paused"
+label_settings = ExtResource("2_06s55")
+
+[node name="Buttons" type="Control" parent="CameraAnchor/Camera3D/EscapeMenu" unique_id=1355244802]
+anchors_preset = 0
+offset_left = 768.0
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 640.0
+
+[node name="Button" type="Button" parent="CameraAnchor/Camera3D/EscapeMenu/Buttons" unique_id=949465892]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 336.0
+offset_bottom = 99.0
+theme = ExtResource("3_qjtj5")
+text = "Reset"
+
 [node name="PickupRay" type="RayCast3D" parent="CameraAnchor" unique_id=410467294]
 target_position = Vector3(0, 0, -2.5)
 
 [node name="ObjectHeldMarker" type="Marker3D" parent="CameraAnchor" unique_id=957290360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45578343, -0.24870288, -1.1773338)
+
+[connection signal="visibility_changed" from="CameraAnchor/Camera3D/EscapeMenu" to="CameraAnchor/Camera3D/EscapeMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="CameraAnchor/Camera3D/EscapeMenu/Buttons/Button" to="CameraAnchor/Camera3D/EscapeMenu" method="reset"]
