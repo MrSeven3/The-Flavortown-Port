@@ -39,8 +39,8 @@ func _input(event): #called on inputs(mouse movements and keypressed)
 		$CameraAnchor.rotation.x = clampf($CameraAnchor.rotation.x, -deg_to_rad(90), deg_to_rad(90))
 		if object_held and held_object:
 			held_object.clear_velocity()
-			held_object.position = $CameraAnchor/ObjectHeldMarker.global_position
-			held_object.rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
+			held_object.global_position = $CameraAnchor/ObjectHeldMarker.global_position
+			held_object.global_rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
 	elif event is InputEventKey:
 		if event.keycode == KEY_SPACE and not event.is_released() and is_on_floor():
 			should_jump = true
@@ -57,8 +57,8 @@ func _input(event): #called on inputs(mouse movements and keypressed)
 func _physics_process(delta: float) -> void:
 	if object_held and held_object:
 		held_object.clear_velocity()
-		held_object.position = $CameraAnchor/ObjectHeldMarker.global_position
-		held_object.rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
+		held_object.global_position = $CameraAnchor/ObjectHeldMarker.global_position
+		held_object.global_rotation = $CameraAnchor/ObjectHeldMarker.global_rotation
 	
 	velocity.x = 0
 	velocity.z = 0

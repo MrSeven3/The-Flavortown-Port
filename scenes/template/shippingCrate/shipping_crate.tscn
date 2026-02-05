@@ -28,13 +28,19 @@ metadata/pickupable = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=694688263]
 shape = SubResource("BoxShape3D_omyxl")
 
-[node name="ShippingCrate" type="Node3D" parent="." unique_id=237687591]
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1383689548]
 mesh = SubResource("BoxMesh_favv8")
-skeleton = NodePath("../ShippingCrate")
+skeleton = NodePath("")
 
 [node name="ConveyorCheck" type="Area3D" parent="." unique_id=319609282]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ConveyorCheck" unique_id=486651259]
 shape = SubResource("BoxShape3D_exq4a")
+
+[node name="Debug" type="Node3D" parent="." unique_id=270169315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="DebugLabel" type="Label3D" parent="Debug" unique_id=313137883]
+billboard = 2
+text = "sdfsdf"
+vertical_alignment = 2

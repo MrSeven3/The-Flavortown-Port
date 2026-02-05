@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bdeh6uk6eca0u"]
+
+[ext_resource type="Texture2D" uid="uid://l444mjfnbone" path="res://resources/tempDevTextures/myBadDrawings/straight_conveyor.svg" id="1_pv82e"]
+[ext_resource type="Script" uid="uid://s8i2l7icvand" path="res://scenes/template/machines/Devlogger/development_machine.gd" id="1_un67p"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://scenes/template/conveyors/straight_conveyor.tscn" id="2_un67p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f16kd"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yynwx"]
+albedo_texture = ExtResource("1_pv82e")
+uv1_scale = Vector3(1, 0.001, 1)
+uv1_offset = Vector3(0.5, 0, 0)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_2lvyi"]
+material = SubResource("StandardMaterial3D_yynwx")
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io73r"]
+size = Vector3(0.8, 0.6, 1)
+
+[node name="DevelopmentMachine" type="AnimatableBody3D" unique_id=480984712]
+script = ExtResource("1_un67p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=462132558]
+shape = SubResource("BoxShape3D_f16kd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=375685179]
+mesh = SubResource("BoxMesh_2lvyi")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=370900251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=844611643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38877237, -0.29152653)
+shape = SubResource("BoxShape3D_io73r")
+
+[node name="StraightConveyor" parent="." unique_id=1451140527 instance=ExtResource("2_un67p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399, 0.5)
+
+[node name="StraightConveyor2" parent="." unique_id=1668837258 instance=ExtResource("2_un67p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399, -0.5)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1106153076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+text = "Devlog Machine"
+
+[connection signal="body_entered" from="Area3D" to="." method="object_entered"]

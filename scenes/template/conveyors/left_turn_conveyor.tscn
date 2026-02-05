@@ -18,11 +18,8 @@ size = Vector3(1, 0.25, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
 size = Vector3(1, 0.2, 1)
 
-[node name="LeftTurnConveyor" type="RigidBody3D" unique_id=1818859155]
+[node name="LeftTurnConveyor" type="AnimatableBody3D" unique_id=722669390]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-gravity_scale = 0.0
-freeze = true
-freeze_mode = 1
 script = ExtResource("1_ph0a7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1220616459]

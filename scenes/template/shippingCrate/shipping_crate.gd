@@ -6,7 +6,21 @@ var is_on_belt:bool = false
 var conveyor_force := Vector3(3,3,3)
 var conveyor_dir := Vector3.ZERO
 
-@export var bounce:float = 0.3
+@export var bounce:float = 0.3 # yes ik i could use the physics material override, but that sets a bunch of other fields I dont want to deal with
+
+@export var package_data = {
+	"project_name":"",
+	"project_max_value":-1,
+	"processing_steps": {
+		"devlog_time":-1, #basically, package goes into a machine, where it will sit for a set period of time
+		"voting_time":-1, #alt for getting number of votes, voter machine works similar to devlog machine
+		"reviewed":false,
+		"passed_review":false
+	}
+}
+
+func _process(delta: float) -> void:
+	$Debug/DebugLabel.text = package_data["project_name"] + "\nDevlog time: " + str(package_data["processing_steps"]["devlog_time"]) + "\nVoting time: " + str(package_data["processing_steps"]["voting_time"]) + "\nPassed review: " + str(package_data["processing_steps"]["passed_review"])
 
 func apply_dir(dir:Vector3) -> void: #called by conveyor belts
 	conveyor_dir += dir
