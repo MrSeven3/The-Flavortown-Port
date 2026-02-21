@@ -1,8 +1,41 @@
 [gd_scene format=3 uid="uid://cr3a6lr3okchn"]
 
-[ext_resource type="PackedScene" uid="uid://baeiyw68aimne" path="res://scenes/template/conveyors/left_turn_conveyor.tscn" id="1_m3omt"]
 [ext_resource type="Script" uid="uid://b6tqgbs2syj6h" path="res://scenes/template/conveyors/conveyor_splitter.gd" id="1_r51a1"]
-[ext_resource type="PackedScene" uid="uid://l6gnt2fbvec6" path="res://scenes/template/conveyors/right_turn_conveyor.tscn" id="2_r51a1"]
+[ext_resource type="Script" uid="uid://cb4tq7fgjdnyr" path="res://scenes/template/conveyors/left_turn_conveyor.gd" id="2_h7v1f"]
+[ext_resource type="Texture2D" uid="uid://cnug4vabaa4b2" path="res://resources/tempDevTextures/myBadDrawings/left_turn_conveyor.svg" id="3_nbo2x"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://scenes/template/conveyors/straight_conveyor.tscn" id="4_vnd3q"]
+[ext_resource type="Script" uid="uid://lj8qttblr015" path="res://scenes/template/conveyors/right_turn_conveyor.gd" id="5_w2brn"]
+[ext_resource type="Texture2D" uid="uid://0rp6avwyjm1y" path="res://resources/tempDevTextures/myBadDrawings/right_turn_conveyor.svg" id="6_mf4pb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibtb"]
+albedo_texture = ExtResource("3_nbo2x")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_murqt"]
+material = SubResource("StandardMaterial3D_vibtb")
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb2v4"]
+size = Vector3(0.75, 0.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jtfr"]
+albedo_texture = ExtResource("6_mf4pb")
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cfcuv"]
+material = SubResource("StandardMaterial3D_3jtfr")
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i1ei"]
+size = Vector3(0.75, 0.25, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxkbp"]
+size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvsoj"]
 size = Vector3(1, 0.5, 1)
@@ -10,14 +43,69 @@ size = Vector3(1, 0.5, 1)
 [node name="ConveyorSplitter" type="Node3D" unique_id=785814400]
 script = ExtResource("1_r51a1")
 
-[node name="LeftTurnConveyor" parent="." unique_id=722669390 instance=ExtResource("1_m3omt")]
+[node name="LeftTurnConveyor" type="AnimatableBody3D" parent="." unique_id=722669390]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("2_h7v1f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftTurnConveyor" unique_id=1220616459]
+mesh = SubResource("BoxMesh_murqt")
+
+[node name="Area3D" type="Area3D" parent="LeftTurnConveyor" unique_id=1394524863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025094151, 0)
+collision_layer = 64
+collision_mask = 64
+gravity_point_center = Vector3(0, 0, -1)
+gravity_direction = Vector3(0, 0, -1)
+gravity = 6.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LeftTurnConveyor/Area3D" unique_id=185916669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, -0.125)
+shape = SubResource("BoxShape3D_qb2v4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftTurnConveyor" unique_id=1854081010]
+shape = SubResource("BoxShape3D_murqt")
+
+[node name="StraightConveyor2" parent="LeftTurnConveyor" unique_id=1451140527 instance=ExtResource("4_vnd3q")]
+transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, 0, -7.1054274e-15, 0, 0.25, 0, 0, 0.375)
 collision_layer = 64
 collision_mask = 64
 
-[node name="RightTurnConveyor" parent="." unique_id=1587949913 instance=ExtResource("2_r51a1")]
+[node name="StraightConveyor3" parent="LeftTurnConveyor" unique_id=1717736925 instance=ExtResource("4_vnd3q")]
+transform = Transform3D(-4.3711395e-08, 0, 0.25, 0, 1, 0, -1, 0, -1.0927849e-08, -0.375, 0, 0)
+collision_layer = 64
+collision_mask = 64
+
+[node name="RightTurnConveyor" type="AnimatableBody3D" parent="." unique_id=1587949913]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, 0, 0, 0)
 collision_layer = 128
 collision_mask = 128
+script = ExtResource("5_w2brn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightTurnConveyor" unique_id=743668086]
+mesh = SubResource("BoxMesh_cfcuv")
+
+[node name="Area3D" type="Area3D" parent="RightTurnConveyor" unique_id=1909283585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.025, 0)
+collision_layer = 128
+collision_mask = 128
+gravity_point_center = Vector3(0, 0, -1)
+gravity_direction = Vector3(0, 0, -1)
+gravity = 6.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightTurnConveyor/Area3D" unique_id=1052850257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, -0.125)
+shape = SubResource("BoxShape3D_8i1ei")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightTurnConveyor" unique_id=1225788002]
+shape = SubResource("BoxShape3D_sxkbp")
+
+[node name="StraightConveyor" parent="RightTurnConveyor" unique_id=1920133466 instance=ExtResource("4_vnd3q")]
+transform = Transform3D(-4.371138e-08, 0, -0.25, 0, 1, 0, 1, 0, -1.0927845e-08, 0.375, 0, 0)
+
+[node name="StraightConveyor2" parent="RightTurnConveyor" unique_id=1747221394 instance=ExtResource("4_vnd3q")]
+transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, 0, -7.1054274e-15, 0, 0.25, 0, 0, 0.375)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=791382807]
 
@@ -25,5 +113,9 @@ collision_mask = 128
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_xvsoj")
 
+[connection signal="body_entered" from="LeftTurnConveyor/Area3D" to="LeftTurnConveyor" method="conveyor"]
+[connection signal="body_exited" from="LeftTurnConveyor/Area3D" to="LeftTurnConveyor" method="stop_conveyoring"]
+[connection signal="body_entered" from="RightTurnConveyor/Area3D" to="RightTurnConveyor" method="conveyor"]
+[connection signal="body_exited" from="RightTurnConveyor/Area3D" to="RightTurnConveyor" method="stop_conveyoring"]
 [connection signal="body_entered" from="Area3D" to="." method="spilt"]
 [connection signal="body_exited" from="Area3D" to="." method="stop_splitting"]
