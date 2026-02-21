@@ -33,6 +33,12 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[layer_names]
+
+3d_physics/layer_1="Main Stuff"
+3d_physics/layer_7="Splitter Left"
+3d_physics/layer_8="Splitter Right"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

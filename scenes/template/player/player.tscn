@@ -42,6 +42,7 @@ offset_right = 1176.0
 offset_bottom = 112.0
 text = "Game Paused"
 label_settings = ExtResource("2_06s55")
+horizontal_alignment = 1
 
 [node name="Buttons" type="Control" parent="CameraAnchor/Camera3D/EscapeMenu" unique_id=1355244802]
 anchors_preset = 0
@@ -53,9 +54,9 @@ offset_bottom = 640.0
 [node name="Button" type="Button" parent="CameraAnchor/Camera3D/EscapeMenu/Buttons" unique_id=949465892]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 24.0
+offset_top = 8.0
 offset_right = 336.0
-offset_bottom = 99.0
+offset_bottom = 83.0
 theme = ExtResource("3_qjtj5")
 text = "Reset"
 

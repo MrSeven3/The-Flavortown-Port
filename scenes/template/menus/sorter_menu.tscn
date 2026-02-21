@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://drqxagrqdn5r5"]
+
+[ext_resource type="LabelSettings" uid="uid://g3aq55juw1m1" path="res://resources/settings/labelSettings/submenu_title.tres" id="1_fj5t3"]
+[ext_resource type="FontFile" uid="uid://cysvnq67n5s5i" path="res://resources/fonts/SpaceGrotesk-Regular.ttf" id="2_h2xvj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gi0oy"]
+font = ExtResource("2_h2xvj")
+font_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SorterMenu" type="Control" unique_id=828878039]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -504.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=350612724]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 760.0
+offset_bottom = 31.0
+text = "Sorter Menu"
+label_settings = ExtResource("1_fj5t3")
+horizontal_alignment = 1
+
+[node name="BasicControls" type="Control" parent="." unique_id=618814407]
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 72.0
+offset_right = 768.0
+offset_bottom = 200.0
+
+[node name="Label" type="Label" parent="BasicControls" unique_id=289397517]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 448.0
+offset_bottom = 50.0
+text = "Basic Controls"
+label_settings = SubResource("LabelSettings_gi0oy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="BasicControls" unique_id=2115572095]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 56.0
+offset_right = 664.0
+offset_bottom = 87.0
+text = "Filter Mode"

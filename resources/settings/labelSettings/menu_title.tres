@@ -1,4 +1,7 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://vc8576187qon"]
 
+[ext_resource type="FontFile" uid="uid://cysvnq67n5s5i" path="res://resources/fonts/SpaceGrotesk-Regular.ttf" id="1_u42os"]
+
 [resource]
+font = ExtResource("1_u42os")
 font_size = 64

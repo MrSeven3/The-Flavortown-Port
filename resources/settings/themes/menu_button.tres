@@ -1,4 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://bg6kajywy3en"]
 
+[ext_resource type="FontFile" uid="uid://cysvnq67n5s5i" path="res://resources/fonts/SpaceGrotesk-Regular.ttf" id="1_kgji7"]
+
 [resource]
 Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_kgji7")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb4tq7fgjdnyr" path="res://scenes/template/conveyors/left_turn_conveyor.gd" id="1_ph0a7"]
 [ext_resource type="Texture2D" uid="uid://cnug4vabaa4b2" path="res://resources/tempDevTextures/myBadDrawings/left_turn_conveyor.svg" id="2_nnxaj"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://scenes/template/conveyors/straight_conveyor.tscn" id="3_nnxaj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibtb"]
 albedo_texture = ExtResource("2_nnxaj")
@@ -12,8 +13,8 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_vibtb")
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8i1ei"]
-size = Vector3(1, 0.25, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qb2v4"]
+size = Vector3(0.75, 0.25, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
 size = Vector3(1, 0.2, 1)
@@ -31,11 +32,18 @@ gravity_point_center = Vector3(0, 0, -1)
 gravity_direction = Vector3(0, 0, -1)
 gravity = 6.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1052850257]
-shape = SubResource("BoxShape3D_8i1ei")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=185916669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, -0.125)
+shape = SubResource("BoxShape3D_qb2v4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1854081010]
 shape = SubResource("BoxShape3D_murqt")
+
+[node name="StraightConveyor2" parent="." unique_id=1451140527 instance=ExtResource("3_nnxaj")]
+transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, 0, -7.1054274e-15, 0, 0.25, 0, 0, 0.375)
+
+[node name="StraightConveyor3" parent="." unique_id=1717736925 instance=ExtResource("3_nnxaj")]
+transform = Transform3D(-4.3711395e-08, 0, 0.25, 0, 1, 0, -1, 0, -1.0927849e-08, -0.375, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="conveyor"]
 [connection signal="body_exited" from="Area3D" to="." method="stop_conveyoring"]

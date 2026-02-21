@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lj8qttblr015" path="res://scenes/template/conveyors/right_turn_conveyor.gd" id="1_p4o86"]
 [ext_resource type="Texture2D" uid="uid://0rp6avwyjm1y" path="res://resources/tempDevTextures/myBadDrawings/right_turn_conveyor.svg" id="2_p4o86"]
+[ext_resource type="PackedScene" uid="uid://bdlvkwkxxalp1" path="res://scenes/template/conveyors/straight_conveyor.tscn" id="3_e7y1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibtb"]
 albedo_texture = ExtResource("2_p4o86")
@@ -13,7 +14,7 @@ material = SubResource("StandardMaterial3D_vibtb")
 size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8i1ei"]
-size = Vector3(1, 0.25, 1)
+size = Vector3(0.75, 0.25, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_murqt"]
 size = Vector3(1, 0.2, 1)
@@ -26,16 +27,23 @@ script = ExtResource("1_p4o86")
 mesh = SubResource("BoxMesh_murqt")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1394524863]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025094151, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.025, 0)
 gravity_point_center = Vector3(0, 0, -1)
 gravity_direction = Vector3(0, 0, -1)
 gravity = 6.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1052850257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, -0.125)
 shape = SubResource("BoxShape3D_8i1ei")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1854081010]
 shape = SubResource("BoxShape3D_murqt")
+
+[node name="StraightConveyor" parent="." unique_id=1451140527 instance=ExtResource("3_e7y1a")]
+transform = Transform3D(-4.371138e-08, 0, -0.25, 0, 1, 0, 1, 0, -1.0927845e-08, 0.375, 0, 0)
+
+[node name="StraightConveyor2" parent="." unique_id=1747221394 instance=ExtResource("3_e7y1a")]
+transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, 0, -7.1054274e-15, 0, 0.25, 0, 0, 0.375)
 
 [connection signal="body_entered" from="Area3D" to="." method="conveyor"]
 [connection signal="body_exited" from="Area3D" to="." method="stop_conveyoring"]
